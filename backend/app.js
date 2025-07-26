@@ -1,46 +1,63 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const categoryRoute = require("./routes/category")
-const  brandRoute = require("./routes/brand")
-const  productRoute = require("./routes/productRoutes");
-const RegisterRoute = require("./routes/register")
-const app = express();
-const newProductRoute = require("./routes/newProduct")
-const categoryName = require('./routes/categoryName')
-const auth = require("./middleWear/auth")
+const path = require("path");
+require("dotenv").config(); // Load environment variables
+
+// Import routes
+const categoryRoute = require("./routes/category");
+const brandRoute = require("./routes/brand");
+const productRoute = require("./routes/productRoutes");
+const RegisterRoute = require("./routes/register");
+const newProductRoute = require("./routes/newProduct");
+const categoryName = require("./routes/categoryName");
 const login = require("./routes/login");
-const wishList = require("./db/whishList");
-featureRoute = require("./routes/featured")
-difrrentRoute = require("./routes/diffrent")
-wishListRoute = require("./routes/wishlist")
-cartRoute = require("./routes/cart")
+const wishListRoute = require("./routes/wishlist");
+const featureRoute = require("./routes/featured");
+const difrrentRoute = require("./routes/diffrent");
+const cartRoute = require("./routes/cart");
+
+const app = express();
 app.use(cors());
-async function connectionDb(){
-              mongoose.connect("mongodb://localhost:27017/ecom_store");
-              console.log("mongodb connected")
+app.use(express.json());
+
+// --- MongoDB Connection ---
+const mongoURI = process.env.MONGO_URI || "mongodb://localhost:27017/ecom_store";
+
+async function connectDB() {
+  try {
+    await mongoose.connect(mongoURI);
+    console.log("MongoDB connected");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+  }
 }
+connectDB();
 
-connectionDb().catch(err =>{
-              console.log(err)
-})
-app.use(express.json())
-app.use("/category",categoryRoute )
-app.use("/newProduct" , newProductRoute)
-app.use("/feature" , featureRoute )
-app.use("/diffrent" , difrrentRoute )
-app.use("/users" , RegisterRoute  )
-app.use("/wishlist" , wishListRoute  )
-app.use("/cart" , cartRoute  )
+// --- API Routes ---
+app.use("/category", categoryRoute);
+app.use("/newProduct", newProductRoute);
+app.use("/feature", featureRoute);
+app.use("/difrrent", difrrentRoute);
+app.use("/users", RegisterRoute);
+app.use("/wishlist", wishListRoute);
+app.use("/cart", cartRoute);
+app.use("/profile", login);
+app.use("/brand", brandRoute);
+app.use("/product", productRoute);
+app.use("/categoryName", categoryName);
 
-app.use("/profile" , login  )
+// Serve Angular build directly from dist/browser
+const angularDistPath = path.join(__dirname, "dist", "browser");
+app.use(express.static(angularDistPath));
 
-app.use("/brand" ,  brandRoute)
-app.use("/product" ,productRoute)
-app.use("/categoryName" , categoryName)
-app.get("/", (req , res)=>{
-           res.send("Hello Node.js");      
-})
-app.listen(3000 ,()=>{
-              console.log("helllo nodejs");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(angularDistPath, "index.html"));
+});
+
+
+// --- Start Server ---
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
