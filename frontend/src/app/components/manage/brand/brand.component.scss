@@ -1,0 +1,44 @@
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.headingPart{
+  display: flex;
+  justify-content: space-around;
+
+  h1{
+    font-size: 20px;
+color: rgb(13, 15, 67);
+  }
+button{
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 10px;
+  height: 70%;
+  margin-top: 10px;
+}
+
+}
+.Edit{
+border: 1px solid blue;
+border-radius: 15px;
+margin: 3px 5px;
+padding:10px ;
+width: 70px;
+}
+.delete{
+border: 1px solid red;
+border-radius: 15px;
+margin: 3px 5px;
+padding:10px ;
+width: 70px;
+}

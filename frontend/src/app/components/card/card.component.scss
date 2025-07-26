@@ -1,0 +1,96 @@
+
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #fdfdfd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #e53935;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+.short-description {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.price-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.original-price {
+  font-size: 0.9rem;
+  color: #888;
+  text-decoration: line-through;
+}
+.price-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Spread items evenly */
+  gap: 10px;
+  margin-top: 5px;
+}
+
+/* Heart Icon (inline) */
+.wishlist-icon {
+  cursor: pointer;
+
+  .heart {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    background: url('https://cdn-icons-png.flaticon.com/512/1077/1077035.png') no-repeat center;
+    background-size: contain;
+    filter: grayscale(1);
+    transition: all 0.3s ease;
+
+    &.active {
+      filter: none;
+      background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center;
+      background-size: contain;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<div *ngIf="item" class="product-card" (click)="takeID(item._id)">
+
+  <div class="card-image">
+    <img [src]="item.images" alt="Product Image" />
+    <div class="discount-badge" *ngIf="item.discount">
+      -{{ item.discount }}%
+    </div>
+  </div>
+
+  <div class="card-body">
+    <p class="short-description">{{ item.shortDescription }}</p>
+    
+    <div class="price-section">
+      <span class="price">₹{{ item.Price }}</span>
+      <span class="original-price" *ngIf="item.discount">
+        ₹{{ (item.Price / (1 - item.discount / 100)).toFixed(0) }}
+      </span>
+
+      <!-- Heart Icon (inline with price) -->
+      <div class="wishlist-icon" (click)="toggleWishlist($event, item)">
+        <i class="fa-heart"
+     [class.fa-regular]="!isWishlistedCheck(item._id)"
+     [class.fa-solid]="isWishlistedCheck(item._id)"  [ngStyle]="{ 'color': isWishlistedCheck(item._id) ? 'red' : 'gray' }"></i>
+      </div>
+    </div>
+  </div>
+</div>

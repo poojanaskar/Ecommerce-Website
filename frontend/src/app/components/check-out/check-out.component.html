@@ -1,0 +1,33 @@
+<div class="checkout-container">
+  <h2>Checkout</h2>
+<p *ngIf="cartItems.length === 0">No cart items found!</p>
+
+  <!-- Cart Items -->
+  <div  *ngFor="let item of cartItems" class="checkout-item">
+    <img [src]="item.productId.images[0]" alt="{{ item.productId.name }}">
+    <div>
+      <h3>{{ item.productId.name }}</h3>
+      <p>Price: ₹{{ item.productId.Price }}</p>
+      <p>Quantity: {{ item.quantity || 1 }}</p>
+    </div>
+  </div>
+
+  <!-- Total -->
+  <div class="checkout-summary">
+    <h3>Total: ₹{{ total }}</h3>
+  </div>
+
+  <!-- Shipping Details -->
+  <div class="shipping-form">
+    <h3>Shipping Details</h3>
+    <form [formGroup]="shippingForm">
+      <input type="text" placeholder="Full Name" formControlName="fullName">
+      <input type="text" placeholder="Address" formControlName="address">
+      <input type="text" placeholder="City" formControlName="city">
+      <input type="text" placeholder="Pincode" formControlName="pincode">
+      <input type="text" placeholder="Phone Number" formControlName="phone">
+    </form>
+  </div>
+
+  <button class="place-order-btn" (click)="placeOrder()">Place Order</button>
+</div>

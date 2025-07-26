@@ -1,0 +1,26 @@
+
+
+<div  *ngIf="!IsEdit" class="divTop">
+  <div>
+<h1>Add Brand</h1>
+<form class="form" [formGroup]="BrandForm" (ngSubmit)="addItem()">
+             
+<input type="text" placeholder="Enter Brand" formControlName="name">
+  <button type="submit" [disabled]="BrandForm.invalid">Add Brand</button>
+
+              </form>
+              </div>
+</div>
+  <div *ngIf="IsEdit" class="divTop">
+    <div>
+<h1>Update Brand</h1>
+<form class="form" [formGroup]="BrandForm" (ngSubmit)="updateBrand()">
+             
+<input type="text" placeholder="Enter Brand" formControlName="name">
+  <button type="submit" [disabled]="BrandForm.invalid">Update Brand</button>
+
+              </form>
+              </div>
+</div>
+
+

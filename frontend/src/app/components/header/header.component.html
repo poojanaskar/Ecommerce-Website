@@ -1,0 +1,31 @@
+<header class="header-container">
+  <div class="top-line">
+    <div class="logo" routerLink="/">ShopLogo</div>
+
+    <div class="search-bar">
+      <input type="text" (keyup)="onKeyPress($event)" placeholder="Search for products..." />
+      <ul class="suggestion-list" *ngIf="showDropdown">
+        <li *ngFor="let product of searchedArray" (click)="detailPageOPne(product._id)">
+          {{ product.name }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="right-icons">
+      <div class="profile-icon" (click)="goToProfile()">
+        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="Profile" />
+      </div>
+
+      <div class="cart-icon" routerLink="/cart" >
+        <img src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" alt="Cart" />
+      
+      </div>
+    </div>
+  </div>
+
+  <nav class="bottom-line">
+    <a *ngFor="let cat of category" class="category" (click)="getCategoryProductList(cat.name)">
+      {{ cat.name }}
+    </a>
+  </nav>
+</header>

@@ -1,0 +1,40 @@
+<div class="page-layout">
+  <!-- Sidebar -->
+  <div class="filter-container" [class.collapsed]="isCollapsed">
+  
+
+    <div class="filters" *ngIf="!isCollapsed">
+      <h3>Sort by Price</h3>
+      <select  [(ngModel)]="sortOrder" (change)="onSortChange($event)">
+        <option value="" selected>Select Sort</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+      </select>
+
+      <h3>Filter by Category</h3>
+      <select [(ngModel)]="name" (change)="onCategoryChange($event)">
+        <option value="" selected>Select Category</option>
+        <option *ngFor="let cat of productlist" [value]="cat.categoryID.name">
+          {{ cat.categoryID.name }}
+        </option>
+      </select>
+
+      <h3>Filter by Brand</h3>
+      <select  [(ngModel)]="Brname" (change)="onBrandChange($event)">
+        <option value="" selected>Select Brand</option>
+        <option *ngFor="let br of productlist" [value]="br.BrandID.name">
+          {{ br.BrandID.name }}
+        </option>
+      </select>
+
+      <button class="clear-btn" (click)="clearFilters()">Clear Filters</button>
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <section class="product-grid">
+    <div class="product-card" *ngFor="let item of categoryName">
+      <app-card [item]="item"></app-card>
+    </div>
+  </section>
+</div>

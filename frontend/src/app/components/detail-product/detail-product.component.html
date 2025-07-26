@@ -1,0 +1,36 @@
+
+<div class="product-detail-container">
+  <div class="image-section">
+    <img class="main-image" [src]="selectedImage " alt="{{ selectedImage }}" />
+
+    <div class="thumbnail-row">
+
+         <div *ngFor="let item of images"> <img  (click)=setImage(item) [src] =" item" /></div>     
+     
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h1 class="product-title">{{ product.name }}</h1>
+
+    <div class="price-section">
+      <span class="final-price">₹{{ product.Price }}</span>
+      <span class="original-price">₹{{ ( product.Price / (1 -  product.discount / 100)).toFixed(0) }}</span>
+      <span class="discount">{{ product.discount }}% OFF</span>
+    </div>
+
+    <p class="description">{{ product.description }}</p>
+
+    <div class="buttons">
+      <button class="add-cart" (click)="addToCart(product._id)">Add to Cart</button>
+      <button class="buy-now" (click)="buyNow()">Buy Now</button>
+    </div>
+  </div>
+</div>
+
+<div class="similar-products" *ngIf="similarProducts.length > 0">
+  <h2>Similar Products</h2>
+  <div class="similar-grid">
+    <app-card *ngFor="let product of similarProducts" [item]="product"></app-card>
+  </div>
+</div>

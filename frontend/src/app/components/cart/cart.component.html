@@ -1,0 +1,28 @@
+<div class="cart-container">
+  <h2>Your Cart</h2>
+
+  <!-- Cart Item 1 -->
+  <div class="cart-item"  *ngFor="let item of cartData ; let i = index">
+    <img [src]="item.productId.images[0]" alt="Product Image" />
+
+    <div class="item-details">
+      <h3>{{item.productId.name}}</h3>
+      <p class="price">{{item.productId.Price}}</p>
+
+      <div class="quantity-control">
+        <button (click)="decreaseQuantity(i)">-</button>
+        <span>{{item.quantity}}</span>
+        <button (click)="increaseQuantity(i)" >+</button>
+      </div>
+
+      <button class="remove-btn">Remove</button>
+    </div>
+  </div>
+
+
+  <!-- Cart Summary -->
+  <div class="cart-summary">
+    <h3>Total: ₹{{ getTotalPrice() }}</h3>
+    <button class="checkout-btn" (click)="goToCheckout()">Proceed to Checkout</button>
+  </div>
+</div>

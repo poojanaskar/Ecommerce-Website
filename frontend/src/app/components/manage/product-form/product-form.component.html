@@ -1,0 +1,107 @@
+<div *ngIf="!isEdit">
+<h1>Add Product</h1>
+              <form [formGroup]="productForm" (ngSubmit)="addProductForm()">
+<label for="categoryID">Select Category:</label>
+                              <select name="" formControlName="categoryID" id="">
+ <option value="" disabled selected>Select a category</option>
+ <option [value]="cat.id" *ngFor="let cat of categoryName" >{{cat.name}}</option>
+                              </select>
+<label for="categoryID">Select Brand:</label>
+                                  <select name="" formControlName="BrandID" id="">
+ <option value="" disabled selected>Select a Brand</option>
+ <option [value]="br.id" *ngFor="let br of brandName" >{{br.name}}</option>
+                              </select>
+
+                            <input type="text" placeholder="Type Product Name"  formControlName="name">
+                            <input type="text" placeholder="description" formControlName="description">
+                            <input type="text" placeholder="shortDescription" formControlName="shortDescription">
+                            <input type="text" placeholder="Price" formControlName="Price">
+                            <input type="text" placeholder="discount" formControlName="discount">
+                          
+                              <label class="custom-checkbox">
+    <input
+      type="checkbox"
+      formControlName="isNewProduct"
+   
+    />
+    <span class="checkmark"></span>
+    New Product?
+  </label>
+           <label class="custom-checkbox">
+    <input
+      type="checkbox"
+      formControlName="isFeature"
+   
+    />
+    <span class="checkmark"></span>
+    Feature Product?
+  </label>
+                            <div formArrayName="images">
+    <div *ngFor="let imageCtrl of images.controls; let i = index">
+      <input type="text" [formControlName]="i" placeholder="Enter image URL">
+      <button type="button" class="delete-btn" (click)="removeImageField(i)">Remove</button>
+    </div>
+    <button type="button" (click)="addImageField()">Add Image</button>
+  </div>
+
+  <button type="submit"  [disabled]="productForm.invalid" class="submit-btn">Add Product</button>
+              </form>
+</div>
+
+
+<div *ngIf="isEdit">
+  <h1>Update Product</h1>
+ <form [formGroup]="productForm" (ngSubmit)="updateProductForm()">
+<label for="categoryID" >Select Category</label>
+                              <select name="" formControlName="categoryID" id="" >
+ <option value="" disabled selected>Select Category</option>
+ <option [value]="cat.id" *ngFor="let cat of categoryName" >{{cat.name}}</option>
+                              </select>
+<label for="categoryID">Select Brand</label>
+                                  <select name="" formControlName="BrandID" id="">
+ <option value="" disabled selected>Select a Brand</option>
+ <option [value]="br.id" *ngFor="let br of brandName" >{{br.name}}</option>
+                              </select>
+<label for="name">Product Name</label>
+                            <input type="text" placeholder="{{oneProductDatshow.name}}"  formControlName="name" >
+                            <label for="description">Description</label>
+                            <input type="text" placeholder="{{oneProductDatshow.description}}" formControlName="description" >
+                                                        <label for="shortDescription">Short Description</label>
+                            <input type="text" placeholder="{{oneProductDatshow.shortDescription}}" formControlName="shortDescription" >
+                                                        <label for="Price">Price</label>
+                            <input type="text" placeholder="{{oneProductDatshow.Price}}" formControlName="Price" >
+                                                        <label for="discount">Discount</label>
+                            <input type="text" placeholder="{{oneProductDatshow.discount}}" formControlName="discount">
+                             <label class="custom-checkbox">
+    <input
+      type="checkbox"
+      formControlName="isNewProduct"
+   
+    />
+    <span class="checkmark"></span>
+    New Product?
+  </label>
+           <label class="custom-checkbox">
+    <input
+      type="checkbox"
+      formControlName="isFeature"
+   
+    />
+    <span class="checkmark"></span>
+    Feature Product?
+  </label>
+                            
+                            <div formArrayName="images">
+                               <label for="discount">Image</label>
+    <div *ngFor="let imageCtrl of images.controls; let i = index">
+      
+      <input type="text" [formControlName]="i" placeholder="Enter image URL">
+      <button type="button" class="delete-btn" (click)="removeImageField(i)">Remove</button>
+    </div>
+    <button type="button" (click)="addImageField()">Add Image</button>
+  </div>
+
+  <button type="submit"  [disabled]="productForm.invalid" class="submit-btn">Update Product</button>
+              </form>
+
+</div>

@@ -1,0 +1,24 @@
+<div class="wishlist-container">
+  <h1>My Wishlist ❤️</h1>
+
+  <!-- Loading spinner -->
+  <div *ngIf="loading" class="loading">
+    <p>Loading your wishlist...</p>
+  </div>
+
+  <!-- Empty state -->
+  <div *ngIf="!loading && wishlistProducts.length === 0" class="empty-state">
+    <img src="https://cdn-icons-png.flaticon.com/512/4076/4076509.png" alt="Empty" />
+    <p>Your wishlist is empty</p>
+ <a routerLink="" class="browse-btn">Browse Products</a>
+
+  </div>
+
+  <!-- Wishlist grid -->
+ <div *ngIf="wishlistProducts.length > 0" 
+     class="wishlist-grid" 
+     [class.single-card]="wishlistProducts.length === 1">
+  <app-card *ngFor="let product of wishlistProducts" [item]="product"  (removedFromWishlist)="removeProductFromUI($event)"></app-card>
+</div>
+
+</div>

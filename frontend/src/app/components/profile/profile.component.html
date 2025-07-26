@@ -1,0 +1,27 @@
+<div class="profile-container" *ngIf="user">
+  <h2>User Profile</h2>
+
+  <div class="profile-avatar"></div>
+
+  <div class="profile-info">
+    <p><strong>Name:</strong> {{ name }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Role:</strong> {{ role }}</p>
+  </div>
+
+  <div class="actions" router >
+    <button class="wishlist-btn" routerLink="/wishList" >
+      <i class="fa-solid fa-heart"></i> My Wishlist
+    </button>
+    <button class="logout-btn" (click)="logOut()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
+  </div>
+</div>
+
+<div class="profile-container" *ngIf="!user">
+  <div class="guest-message">
+    <h2>Please log in to view your profile</h2>
+    <a class="login-link" routerLink="/login">Go to Login</a>
+  </div>
+</div>
