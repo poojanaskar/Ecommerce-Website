@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "build": "cd frontend && npm install && npm run build && xcopy /E /I /Y dist ..\\dist"
-  },
+  "start": "node app.js",  
+    "dev": "nodemon app.js" 
+    },
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
