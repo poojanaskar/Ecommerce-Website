@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
- BASE_URL = 'http://localhost:3000'; 
+ BASE_URL = 'https://ecommerce-website-tnjq.onrender.com'; 
   constructor(private http : HttpClient) { 
  }
  login(data:login):Observable<LoginResponse >{

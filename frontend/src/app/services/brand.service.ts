@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
 })
 export class BrandService {
  
-baseUrl ="http://localhost:3000"
+baseUrl ="https://ecommerce-website-tnjq.onrender.com"
   constructor( private http : HttpClient) { }
 
   deleteBrand(id:string){

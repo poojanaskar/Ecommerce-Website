@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WishListService {
-baseUrl ="http://localhost:3000"
+baseUrl ="https://ecommerce-website-tnjq.onrender.com"
   constructor(private http :HttpClient) { }
 
 

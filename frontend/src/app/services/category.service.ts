@@ -19,7 +19,7 @@ interface deleteCategory{
   providedIn: 'root'
 })
 export class CategoryService {
-private BaseRule:string =  "http://localhost:3000" ;
+private BaseRule:string =  "https://ecommerce-website-tnjq.onrender.com" ;
 
   constructor(private http : HttpClient) {}
   getCategoryList(): Observable<CategoryApiResponse> {

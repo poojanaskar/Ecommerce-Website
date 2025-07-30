@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-baseUrl ="http://localhost:3000"
+baseUrl ="https://ecommerce-website-tnjq.onrender.com"
   constructor(private http : HttpClient) { }
 
   getCart(id:string):Observable<CartResponse >{

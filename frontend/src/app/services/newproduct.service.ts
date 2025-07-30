@@ -6,7 +6,7 @@ import {  newProductResponse } from '../type/type';
   providedIn: 'root'
 })
 export class NewproductService {
-baseUrl ="http://localhost:3000"
+baseUrl ="https://ecommerce-website-tnjq.onrender.com"
   constructor(private http : HttpClient) { }
 
 getNewProduct():Observable<newProductResponse>{

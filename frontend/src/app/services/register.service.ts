@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RegisterService {
- BASE_URL = 'http://localhost:3000/users'; 
+ BASE_URL = 'https://ecommerce-website-tnjq.onrender.com'; 
   constructor(private http : HttpClient) { 
  }
  register(data:User){
   console.log("data register" , data)
-return this.http.post(`${this.BASE_URL}/register` , data)
+return this.http.post(`${this.BASE_URL}/users/register` , data)
  }
 }

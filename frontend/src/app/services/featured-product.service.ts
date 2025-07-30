@@ -7,7 +7,7 @@ import { newProductResponse } from '../type/type';
   providedIn: 'root'
 })
 export class FeaturedProductService {
-baseUrl ="http://localhost:3000"
+baseUrl ="https://ecommerce-website-tnjq.onrender.com"
   constructor(private http : HttpClient) { }
 
 getFeature():Observable<newProductResponse>{
