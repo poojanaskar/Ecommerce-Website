@@ -74,8 +74,7 @@ app.use("/brand", brandRoute);
 app.use("/product", productRoute);
 app.use("/categoryName", categoryName);
 
-
-const angularDistPath = path.join(__dirname, "dist", "browser");
+const angularDistPath = path.join(__dirname, "dist", "browser", "browser"); // <--- Added another "browser" here
 app.use(express.static(angularDistPath));
 
 app.get("*", (req, res) => {
